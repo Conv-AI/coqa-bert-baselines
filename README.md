@@ -12,13 +12,17 @@ This repo builds upon the original code provided with the paper which can be fou
 
 ## Dataset
 
-The dataset can be downloaded from [here](https://stanfordnlp.github.io/coqa/). The dataset needs to be preprocessed to obtain 2 files - `coqa.train.json` and `coqa.dev.json`. You can either follow the steps provided in the [original repo](https://github.com/stanfordnlp/coqa-baselines) for preprocessing or download the preprocessed files directly from [here](https://drive.google.com/drive/folders/1XxKDaJegoj_gNv6pkXnFvya9TzborzTQ?usp=sharing). 
+The dataset can be downloaded from [here](https://stanfordnlp.github.io/coqa/). The dataset needs to be preprocessed to obtain 2 files - `coqa.train.json` and `coqa.dev.json`. You can either follow the steps provided in the [original repo](https://github.com/stanfordnlp/coqa-baselines) for preprocessing
+
+#### Download the preprocessed files directly from [here](https://drive.google.com/drive/folders/10HXULZHq973NWds0ONJBvjOLibiIlng7?usp=sharing). 
 
 ## Requirements
 
 `torch` : can be installed from [here](https://pytorch.org/). This code was tested with torch 0.3.0 and cuda 9.2.
 
 `transformers`: can be installed from  [here](https://github.com/huggingface/transformers).
+
+`textacy`
 
 ## Usage
 To run the models use the following command - 
@@ -47,17 +51,9 @@ The ```arguments``` are as follows :
 | gradient_accumulation_steps | Number of update steps to accumulate before performing a backward/update pass. |
 | adam_epsilon | Epsilon for Adam optimizer. |
 
-For the given experiments the following values were used:
+For the given experiments we ran the following command:
 
-```
-n_history = 2
-batch_size = 4 (Couldn't fit a batch size larger than this on the GPU)
-lr = 5e-5
-verbose = 200
-gradient_accumulation_steps = 12
-```
-
-The below experiments were conducted on [google colab](https://colab.research.google.com). For all the `BERT` models, the `base` versions were used (For eg: `bert-base-uncased`)
+`sudo python main.py --trainset="./coqa.train.json" --devset="./coqa.dev.json" --model_name="BERT" --n_history=2 --batch-size=2 --lr=5e-5 --gradient_accumulation_steps=10`
 
 
 ## Results
