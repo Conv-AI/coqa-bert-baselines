@@ -25,7 +25,9 @@ The dataset can be downloaded from [here](https://stanfordnlp.github.io/coqa/). 
 `textacy`
 
 ## Usage
-To run the models use the following command - 
+To run the models use the following command -
+
+Create  folder structure `output\outputXXXXX` , where XXXXX denotes the size of the dataset add to num_history. Edit `utils\data_utils.py` to control the amount of data being loaded for training.
 
 ``` python main.py --arguments```
 
@@ -53,7 +55,7 @@ The ```arguments``` are as follows :
 
 For the given experiments we ran the following command:
 
-`sudo python main.py --trainset="./coqa.train.json" --devset="./coqa.dev.json" --model_name="BERT" --n_history=2 --batch-size=2 --lr=5e-5 --gradient_accumulation_steps=10`
+`sudo python main.py --trainset="./coqa.train.json" --devset="./coqa.dev.json" --model_name="BERT" --save_state_dir="./output/output4004" --n_history=4 --batch-size=2 --lr=5e-5 --gradient_accumulation_steps=10 --max_epochs=35`
 
 
 ## Results
